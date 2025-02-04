@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Second Smallest & Largest</title>
+</head>
+<body>
+    <h1>Find Second Smallest & Second Largest</h1>
+
+    <label for="arrayInput">Enter comma-separated numbers:</label>
+    <input type="text" id="arrayInput" placeholder="e.g. 4,2,9,1,5,6">
+
+    <br><br>
+
+    <button onclick="processArray()">Find</button>
+
+    <h2>Results:</h2>
+    <p id="result"></p>
+
+    <script>
+        function findSecondSmallestAndLargest(arr) {
+            if (arr.length < 2) {
+                return "Array must have at least two unique numbers.";
+            }
+
+            // Remove duplicates and sort the array
+            let sortedArr = [...new Set(arr)].sort((a, b) => a - b);
+
+            if (sortedArr.length < 2) {
+                return "Not enough unique numbers.";
+            }
+
+            return {
+                secondSmallest: sortedArr[1],
+                secondLargest: sortedArr[sortedArr.length - 2]
+            };
+        }
+
+        function processArray() {
+            let input = document.getElementById('arrayInput').value;
+            let arr = input.split(',').map(Number);
+
+            if (arr.some(isNaN)) {
+                document.getElementById('result').innerHTML = "Please enter a valid list of numbers.";
+                return;
+            }
+
+            let result = findSecondSmallestAndLargest(arr);
+
+            if (typeof result === "string") {
+                document.getElementById('result').innerHTML = result;
+            } else {
+                document.getElementById('result').innerHTML = `Second Smallest: ${result.secondSmallest} <br> Second Largest: ${result.secondLargest}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even or Odd Checker</title>
+    <script>
+        function checkEvenOdd() {
+            let num = parseInt(document.getElementById('number').value);
+            let result = num % 2 === 0 ? 'Even' : 'Odd';
+            document.getElementById('result').innerText = `The number ${num} is ${result}.`;
+        }
+
+        function separateEvenOdd() {
+            let inputValues = document.getElementById('numbers').value.split(',');
+            let numbers = inputValues.map(num => parseInt(num.trim()));
+            let evenNumbers = numbers.filter(num => num % 2 === 0);
+            let oddNumbers = numbers.filter(num => num % 2 !== 0);
+            document.getElementById('even').innerText = `Even Numbers: ${evenNumbers.join(', ')}`;
+            document.getElementById('odd').innerText = `Odd Numbers: ${oddNumbers.join(', ')}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Check Even or Odd</h2>
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number">
+    <button onclick="checkEvenOdd()">Check</button>
+    <p id="result"></p>
+    
+    <h2>Separate Even and Odd Numbers</h2>
+    <label for="numbers">Enter numbers separated by commas:</label>
+    <input type="text" id="numbers" placeholder="e.g. 1, 2, 3, 4">
+    <button onclick="separateEvenOdd()">Separate</button>
+    <p id="even"></p>
+    <p id="odd"></p>
+</body>
+</html>

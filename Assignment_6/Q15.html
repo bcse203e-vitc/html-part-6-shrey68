@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Missing Number</title>
+</head>
+<body>
+    <h2>Find the Missing Number in Sequence</h2>
+    <label for="sequenceInput">Enter sequence (comma-separated):</label>
+    <input type="text" id="sequenceInput" placeholder="e.g. 1, 2, 3, 5, 6">
+    <button onclick="findMissingNumber()">Find Missing Number</button>
+
+    <p id="result"></p>
+
+    <script>
+        function findMissingNumber() {
+           e
+            let sequence = document.getElementById("sequenceInput").value;
+            
+            let arr = sequence.split(',').map(Number);
+            let n = Math.max(...arr);
+            
+            let totalSum = (n * (n + 1)) / 2;
+            let currentSum = arr.reduce((acc, num) => acc + num, 0);
+            let missingNumber = totalSum - currentSum;
+            
+            document.getElementById("result").innerHTML = `The missing number is: ${missingNumber}`;
+        }
+    </script>
+</body>
+</html>

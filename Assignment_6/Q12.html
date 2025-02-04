@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicates from Array</title>
+</head>
+<body>
+    <h1>Remove Duplicate Values</h1>
+    <label for="arrayInput">Enter comma-separated numbers:</label>
+    <input type="text" id="arrayInput" placeholder="e.g. 1,2,2,3,4,4,5">
+    
+    <br><br>
+
+    <button onclick="processArray()">Remove Duplicates</button>
+
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+        function removeDuplicatesWithoutSet(arr) {
+            let uniqueArray = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (!uniqueArray.includes(arr[i])) {
+                    uniqueArray.push(arr[i]);
+                }
+            }
+            return uniqueArray;
+        }
+
+        function processArray() {
+            let input = document.getElementById('arrayInput').value;
+            let arr = input.split(',').map(Number);
+
+            if (arr.some(isNaN)) {
+                document.getElementById('result').innerHTML = "Please enter a valid list of numbers.";
+                return;
+            }
+
+            let result = removeDuplicatesWithoutSet(arr);
+            document.getElementById('result').innerHTML = `Unique values: [${result.join(', ')}]`;
+        }
+    </script>
+</body>
+</html>

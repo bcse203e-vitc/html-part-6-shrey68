@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Digits in a Number</title>
+    <script>
+        function countDigits() {
+            let num = document.getElementById('number').value.trim();
+            if (!/^-?\d+$/.test(num)) {
+                document.getElementById('result').innerHTML = "Please enter a valid integer.";
+                return;
+            }
+            let count = num.replace('-', '').length;
+            document.getElementById('result').innerHTML = `Number of digits: ${count}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Count Digits in a Number</h2>
+    <label for="number">Enter an integer:</label>
+    <input type="text" id="number" placeholder="e.g. 9876">
+    <button onclick="countDigits()">Count Digits</button>
+    <p id="result"></p>
+</body>
+</html>

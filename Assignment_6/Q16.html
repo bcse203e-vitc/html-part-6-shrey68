@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Array Without .sort()</title>
+</head>
+<body>
+    <h2>Sort Array of Numbers</h2>
+    <label for="arrayInput">Enter array (comma-separated):</label>
+    <input type="text" id="arrayInput" placeholder="e.g. 3, 1, 4, 2, 5">
+    
+    <button onclick="sortArray('asc')">Sort Ascending</button>
+    <button onclick="sortArray('desc')">Sort Descending</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function bubbleSort(arr, order) {
+            let len = arr.length;
+            let swapped;
+            for (let i = 0; i < len; i++) {
+                swapped = false;
+                for (let j = 0; j < len - i - 1; j++) {
+                    if ((order === 'asc' && arr[j] > arr[j + 1]) || 
+                        (order === 'desc' && arr[j] < arr[j + 1])) {
+                  
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                if (!swapped) break; 
+            }
+            return arr;
+        }
+        function sortArray(order) {
+            let input = document.getElementById("arrayInput").value;
+            let arr = input.split(',').map(Number);  
+            
+            if (arr.length === 0 || arr.some(isNaN)) {
+                document.getElementById("result").innerHTML = "Please enter a valid array of numbers.";
+                return;
+            }
+            let sortedArr = bubbleSort(arr, order);  
+            document.getElementById("result").innerHTML = `Sorted Array (${order}): ${sortedArr.join(', ')}`;
+        }
+    </script>
+</body>
+</html>
