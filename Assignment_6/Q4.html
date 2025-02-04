@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Number & Palindrome Check</title>
+    <script>
+        function reverseNumber() {
+            let num = document.getElementById('number').value;
+            let reversed = num.split('').reverse().join('');
+            let isPalindrome = (num === reversed) ? "Yes" : "No";
+            document.getElementById('result').innerHTML = `Reversed Number: ${reversed} <br> Is Palindromic: ${isPalindrome}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Reverse Number & Check Palindrome</h2>
+    <label for="number">Enter a number:</label>
+    <input type="text" id="number" placeholder="e.g. 12345">
+    <button onclick="reverseNumber()">Reverse</button>
+    <p id="result"></p>
+</body>
+</html>
